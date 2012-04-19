@@ -1,6 +1,6 @@
 # jQuery Truncate
 
-Dead simple, HTML safe, truncation via the DOM.
+Dead simple HTML safe truncation via the DOM.
 
 ## Usage
 
