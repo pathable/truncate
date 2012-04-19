@@ -1,7 +1,3 @@
-# jQuery Truncate
-
-Dead simple HTML safe truncation via the DOM.
-
 ## Usage
 
 ### jQuery.truncate(html, options)
