@@ -58,6 +58,8 @@ If `words` is truthy the input will only be truncated at word boundaries.
 
 ### noBreaks
 
+*Default: false*
+
 If `noBreaks` is truthy the input will contain no break elements.
 
 ```javascript
@@ -69,6 +71,8 @@ If `noBreaks` is truthy the input will contain no break elements.
 ```
 
 ### ellipsis
+
+*Default: '…'*
 
 The `ellipsis` setting is used to provide a different character for the ellipsis.
 
