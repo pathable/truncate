@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Truncate by pathable</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Truncate</h1>
+        <p>Dead simple HTML-safe truncation via the DOM.</p>
+        <p class="view"><a href="https://github.com/pathable/truncate">View the Project on GitHub <small>pathable/truncate</small></a></p>
+        <ul>
+          <li><a href="https://github.com/pathable/truncate/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/pathable/truncate/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/pathable/truncate">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>Usage</h2>
+
+<h3>jQuery.truncate(html, options)</h3>
+
+<div class="highlight">
+<pre><span class="o">&gt;</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">truncate</span><span class="p">(</span><span class="s1">'&lt;p&gt;Stuff and &lt;i&gt;Nonsense&lt;/i&gt;&lt;/p&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">length</span><span class="o">:</span> <span class="mi">13</span>
+<span class="p">});</span>
+<span class="s1">'&lt;p&gt;Stuff and &lt;i&gt;No…&lt;/i&gt;&lt;/p&gt;'</span>
+</pre>
+</div>
+
+
+<h3>$el.truncate(options)</h3>
+
+<div class="highlight">
+<pre><span class="o">&gt;</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s1">'&lt;p&gt;Stuff and &lt;i&gt;Nonsense&lt;/i&gt;&lt;/p&gt;'</span><span class="p">).</span><span class="nx">truncate</span><span class="p">({</span>
+  <span class="nx">length</span><span class="o">:</span> <span class="mi">13</span>
+<span class="p">}).</span><span class="nx">html</span><span class="p">();</span>
+<span class="s1">'&lt;p&gt;Stuff and &lt;i&gt;No…&lt;/i&gt;&lt;/p&gt;'</span>
+</pre>
+</div>
+
+
+<h2>Options</h2>
+
+<p>Default options are stored on <code>jQuery.truncate.defaults</code>.</p>
+
+<h3>length</h3>
+
+<p><em>Default: Infinity</em></p>
+
+<p>The maximum length (including the ellipsis) of the truncated html.</p>
+
+<h3>stripTags</h3>
+
+<p><em>Default: false</em></p>
+
+<p>If <code>stripTags</code> is truthy all html tags will be stipped, leaving only the text.</p>
+
+<div class="highlight">
+<pre><span class="o">&gt;</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">truncate</span><span class="p">(</span><span class="s1">'&lt;p&gt;Stuff and &lt;i&gt;Nonsense&lt;/i&gt;&lt;/p&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">length</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span>
+  <span class="nx">stripTags</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+<span class="s1">'Stuff and No…'</span>
+</pre>
+</div>
+
+
+<h3>words</h3>
+
+<p><em>Default: false</em></p>
+
+<p>If <code>words</code> is truthy the input will only be truncated at word boundaries.</p>
+
+<div class="highlight">
+<pre><span class="o">&gt;</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">truncate</span><span class="p">(</span><span class="s1">'&lt;p&gt;Stuff and &lt;i&gt;Nonsense&lt;/i&gt;&lt;/p&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">length</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span>
+  <span class="nx">words</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+<span class="s1">'&lt;p&gt;Stuff and…&lt;/p&gt;'</span>
+</pre>
+</div>
+
+
+<h3>noBreaks</h3>
+
+<p><em>Default: false</em></p>
+
+<p>If <code>noBreaks</code> is truthy the input will contain no break elements.</p>
+
+<div class="highlight">
+<pre><span class="o">&gt;</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">truncate</span><span class="p">(</span><span class="s1">'&lt;p&gt;Stuff and&lt;br&gt;&lt;i&gt;Nonsense&lt;/i&gt;&lt;/p&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">length</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span>
+  <span class="nx">noBreaks</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+<span class="s1">'&lt;p&gt;Stuff and &lt;i&gt;No…&lt;/i&gt;&lt;/p&gt;'</span>
+</pre>
+</div>
+
+
+<h3>ellipsis</h3>
+
+<p><em>Default: '…'</em></p>
+
+<p>The <code>ellipsis</code> setting is used to provide a different character for the ellipsis.</p>
+
+<div class="highlight">
+<pre><span class="o">&gt;</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">truncate</span><span class="p">(</span><span class="s1">'&lt;p&gt;Stuff and &lt;i&gt;Nonsense&lt;/i&gt;&lt;/p&gt;'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">length</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span>
+  <span class="nx">ellipsis</span><span class="o">:</span> <span class="s1">'~'</span>
+<span class="p">});</span>
+<span class="s1">'&lt;p&gt;Stuff and &lt;i&gt;No~&lt;/i&gt;&lt;/p&gt;'</span>
+</pre>
+</div>
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/pathable">pathable</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
