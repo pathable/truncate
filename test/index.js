@@ -7,6 +7,10 @@
   var txt = 'stuff and nonsense';
   var html = '<i><em>stuff</em> an</i>d <b>nonsense</b>';
 
+  test('Accept a number as options.', function() {
+    strictEqual($.truncate('<i>four</i>', 3), '<i>fo~</i>');
+  });
+
   test('plain text', function() {
     strictEqual($.truncate(txt, {length: 20}), txt);
     strictEqual($.truncate(txt, {length: 18}), txt);

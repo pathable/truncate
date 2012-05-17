@@ -10,6 +10,7 @@
 
   // Truncate the contents of an element in place.
   $.fn.truncate = function(options){
+    if ($.isNumeric(options)) options = {length: options};
     var o = $.extend({}, $.truncate.defaults, options);
 
     return this.each(function(){
