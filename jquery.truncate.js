@@ -1,19 +1,19 @@
-(function($){
+(function($) {
 
   // Matches trailing non-space characters.
   var chop = /(\s*\S+|\s)$/;
 
   // Return a truncated html string.  Delegates to $.fn.truncate.
-  $.truncate = function(html, options){
+  $.truncate = function(html, options) {
     return $('<div></div>').append(html).truncate(options).html();
   };
 
   // Truncate the contents of an element in place.
-  $.fn.truncate = function(options){
+  $.fn.truncate = function(options) {
     if ($.isNumeric(options)) options = {length: options};
     var o = $.extend({}, $.truncate.defaults, options);
 
-    return this.each(function(){
+    return this.each(function() {
       var self = $(this);
 
       if (o.noBreaks) self.find('br').replaceWith(' ');
@@ -31,7 +31,7 @@
       if (excess < 0 || !excess && !o.truncated) return;
 
       // Iterate over each child node in reverse, removing excess text.
-      $.each(self.contents().get().reverse(), function(i, el){
+      $.each(self.contents().get().reverse(), function(i, el) {
         var $el = $(el);
         var text = $el.text();
         var length = text.length;
