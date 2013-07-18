@@ -3,6 +3,24 @@
   // Matches trailing non-space characters.
   var chop = /(\s*\S+|\s)$/;
 
+  // Escape html
+  var escapes = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    '/': '&#x2F;'
+  };
+
+  var escaper = /[&<>"'/]/g;
+
+  var escape = function(text) {
+    return text.replace(escaper, function(match) {
+      return escapes[match];
+    });
+  };
+
   // Return a truncated html string.  Delegates to $.fn.truncate.
   $.truncate = function(html, options) {
     return $('<div></div>').append(html).truncate(options).html();
@@ -25,7 +43,7 @@
 
       // Chop off any partial words if appropriate.
       if (o.words && excess > 0) {
-        excess = text.length - text.substring(0, o.length).replace(chop, '').length - 1;
+        excess = text.length - text.slice(0, o.length).replace(chop, '').length - 1;
       }
 
       if (excess < 0 || !excess && !o.truncated) return;
@@ -46,8 +64,8 @@
 
         // Replace text nodes with the appropriate substring and ellipsis.
         if (el.nodeType === 3) {
-          text = text.substring(0, length - excess - 1);
-          el.textContent = text + o.ellipsis;
+          text = text.slice(0, length - excess - 1);
+          $el.replaceWith(escape(text) + o.ellipsis);
           return false;
         }
 
