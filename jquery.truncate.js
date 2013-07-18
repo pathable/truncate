@@ -47,7 +47,7 @@
         // Replace text nodes with the appropriate substring and ellipsis.
         if (el.nodeType === 3) {
           text = text.substring(0, length - excess - 1);
-          $el.replaceWith(text + o.ellipsis);
+          el.textContent = text + o.ellipsis;
           return false;
         }
 
