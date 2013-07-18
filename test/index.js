@@ -44,4 +44,12 @@
     strictEqual($.truncate('foo <em>bar baz</em>', {length: 8, stripTags: true}), 'foo bar…');
   });
 
+  test('entities', function() {
+    var str = '<div>foo&lt;bar&lt;baz</div>';
+    strictEqual($.truncate(str, {length: 5}), '<div>foo&lt;~</div>');
+    strictEqual($.truncate(str, {length: 6}), '<div>foo&lt;b~</div>');
+    strictEqual($.truncate(str, {length: 8}), '<div>foo&lt;bar~</div>');
+    strictEqual($.truncate(str, {length: 9}), '<div>foo&lt;bar&lt;~</div>');
+  })
+
 })(jQuery);
