@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/pathable/truncate.png?branch=master)](https://travis-ci.org/pathable/truncate)
+
 ## Usage
 
 ### jQuery.truncate(html, options)
