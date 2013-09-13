@@ -1,6 +1,7 @@
 {
   "name": "truncate",
   "version": "0.0.1",
+  "repository": "https://github.com/pathable/truncate.git",
   "scripts": {
     "test": "phantomjs ./test/vendor/runner.js ./test/index.html?noglobals=true"
   },
