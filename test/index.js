@@ -50,6 +50,12 @@
     strictEqual($.truncate(html, {length: 6}), '<div>foo&lt;b…</div>');
     strictEqual($.truncate(html, {length: 8}), '<div>foo&lt;bar…</div>');
     strictEqual($.truncate(html, {length: 9}), '<div>foo&lt;bar&lt;…</div>');
-  })
+  });
+
+  test('html ellipsis', function() {
+    var ellipsis = '… <button>read more</button>';
+    strictEqual($.truncate(txt, {length: 9, ellipsis: ellipsis}), 'stuff an… <button>read more</button>');
+    strictEqual($.truncate(html, {length: 4, ellipsis: ellipsis}), '<i><em>stu… <button>read more</button></em></i>');
+  });
 
 })(jQuery);
