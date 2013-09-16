@@ -44,10 +44,9 @@
           return;
         }
 
-        // Replace text nodes with the appropriate substring and ellipsis.
+        // Remove the excess text and append the ellipsis.
         if (el.nodeType === 3) {
-          text = text.slice(0, length - excess - 1);
-          $el.replaceWith([document.createTextNode(text), o.ellipsis]);
+          $(el.splitText(length - excess - 1)).replaceWith(o.ellipsis);
           return false;
         }
 
