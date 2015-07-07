@@ -5,7 +5,7 @@
   "scripts": {
     "test": "phantomjs ./test/vendor/runner.js ./test/index.html?noglobals=true"
   },
-  "dependencies": {
+  "devDependencies": {
     "phantomjs": "1.9.0-1"
   }
 }
