@@ -3,6 +3,9 @@
   // Matches trailing non-space characters.
   var chop = /(\s*\S+|\s)$/;
 
+  // Matches the first word in the string.
+  var start = /^(\S*)/;
+
   // Return a truncated html string.  Delegates to $.fn.truncate.
   $.truncate = function(html, options) {
     return $('<div></div>').append(html).truncate(options).html();
@@ -25,7 +28,13 @@
 
       // Chop off any partial words if appropriate.
       if (o.words && excess > 0) {
-        excess = text.length - text.slice(0, o.length).replace(chop, '').length - 1;
+        var truncated = text.slice(0, o.length).replace(chop, '').length;
+
+        if (o.keepFirstWord && truncated === 0) {
+          excess = text.length - start.exec(text)[0].length - 1;
+        } else {
+          excess = text.length - truncated - 1;
+        }
       }
 
       if (excess < 0 || !excess && !o.truncated) return;
@@ -64,6 +73,10 @@
 
     // Only truncate at word boundaries.
     words: false,
+
+    // When 'words' is active, keeps the first word in the string
+    // even if it's longer than a target length.
+    keepFirstWord: false,
 
     // Replace instances of <br> with a single space.
     noBreaks: false,

@@ -33,6 +33,11 @@
     strictEqual($.truncate(txt, {length: 14, words: true}), 'stuff and…');
     strictEqual($.truncate(txt, {length: 10, words: true}), 'stuff and…');
     strictEqual($.truncate(txt, {length: 9, words: true}), 'stuff…');
+    strictEqual($.truncate(txt, {length: 4, words: true}), '…');
+  });
+
+  test('keepLastWord', function () {
+    strictEqual($.truncate(txt, {length: 4, words: true, keepFirstWord: true}), 'stuff…');
   });
 
   test('noBreaks', function() {
