@@ -58,6 +58,23 @@ If `words` is truthy the input will only be truncated at word boundaries.
 '<p>Stuff and…</p>'
 ```
 
+### keepFirstWord
+
+*Default: false*
+
+When `words` and `keepFirstWord` are both truthy the input will contain
+at least one word beside the ellipsis even if it's longer than
+a target length.
+
+```javascript
+> jQuery.truncate('<p>Stuff and <i>Nonsense</i></p>', {
+  length: 4,
+  words: true,
+  keepFirstWord: true
+});
+'<p>Stuff…</p>'
+```
+
 ### noBreaks
 
 *Default: false*
