@@ -75,6 +75,20 @@ a target length.
 '<p>Stuff…</p>'
 ```
 
+### finishBlock
+
+*Default: false*
+
+When `finishBlock` is true it will always truncate the content at the end of the block.
+
+```javascript
+> jQuery.truncate('<p>Stuff and <i>Nonsense</i> and something else</p>', {
+  length: 13,
+  finishBlock: true,
+});
+'<p>Stuff and <i>Nonsense…</i></p>'
+```
+
 ### noBreaks
 
 *Default: false*
