@@ -40,6 +40,12 @@
     strictEqual($.truncate(txt, {length: 4, words: true, keepFirstWord: true}), 'stuff…');
   });
 
+  test('finishBlock', function () {
+    var html = '<p><i><em>stuff</em> an</i>d <b>nonsense</b> and something else</p>';
+    strictEqual($.truncate(html, {length: 13, finishBlock: true}), '<p><i><em>stuff</em> an</i>d <b>nonsense…</b></p>');
+    strictEqual($.truncate(html, {length: 23, finishBlock: true}), '<p><i><em>stuff</em> an</i>d <b>nonsense</b> and something else…</p>');
+  });
+
   test('noBreaks', function() {
     strictEqual($.truncate('foo<br>bar baz', {length: 8, noBreaks: true}), 'foo bar…');
   });

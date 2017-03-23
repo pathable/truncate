@@ -55,7 +55,12 @@
 
         // Remove the excess text and append the ellipsis.
         if (el.nodeType === 3) {
-          $(el.splitText(length - excess - 1)).replaceWith(o.ellipsis);
+          // should we finish the block anyway?
+          if (o.finishBlock) {
+            $(el.splitText(length)).replaceWith(o.ellipsis);
+          } else {
+            $(el.splitText(length - excess - 1)).replaceWith(o.ellipsis);
+          }
           return false;
         }
 
@@ -80,6 +85,9 @@
 
     // Replace instances of <br> with a single space.
     noBreaks: false,
+
+    // if true always truncate the content at the end of the block.
+    finishBlock: false,
 
     // The maximum length of the truncated html.
     length: Infinity,
